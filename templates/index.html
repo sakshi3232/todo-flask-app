@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>To-Do List</title>
+</head>
+<body>
+    <h2>Welcome, {{ current_user.username }}</h2>
+    <form action="/add_task" method="post">
+        <input type="text" name="title" placeholder="Task Title" required>
+        <input type="date" name="due_date" required>
+        <button type="submit">Add Task</button>
+    </form>
+
+    <ul>
+        {% for task in tasks %}
+            <li>{{ task.title }} - {{ task.due_date }} 
+                <a href="/delete_task/{{ task.id }}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a href="/logout">Logout</a>
+</body>
+</html>
